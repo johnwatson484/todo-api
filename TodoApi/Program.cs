@@ -56,26 +56,6 @@ app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
 
 app.Run();
 
-public class Todo
-{
-    public int Id { get; set; }
-    public string? Name { get; set; }
-    public bool IsComplete { get; set; }
-    public string? Secret { get; set; }
-}
-
-public class TodoItemDTO
-{
-    public int Id { get; set; }
-    public string? Name { get; set; }
-    public bool IsComplete { get; set; }
-
-    public TodoItemDTO() { }
-    public TodoItemDTO(Todo todoItem) =>
-    (Id, Name, IsComplete) = (todoItem.Id, todoItem.Name, todoItem.IsComplete);
-}
-
-
 class TodoDb : DbContext
 {
     public TodoDb(DbContextOptions<TodoDb> options)
